@@ -1,0 +1,63 @@
+---
+title: "README for AmodeoAdvising on GitHub"
+author: "Rebecca Amodeo"
+date: "8/31/2022"
+output: html_document
+--- 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+pacman::p_load(dplyr, magrittr, readr)
+```
+# Hello World ;)  
+
+**AmodeoAdvising/AmodeoAdvising** is a ✨ _very special_ ✨ repository because it's where we e-meet!  
+
+I'm R A Amodeo (they/she), born scientist and trained econometrician.  
+
+Welcome to my GitHub profile.  
+
+**Let's work together.**  
+Browse my public repos and reach out via [email](mailto:rebeccaaamodeo@gmail.com) to learn what being on my client list can do for you.   
+
+Here are some ideas to get you started:  
+
+- Increase profits with an audit report on process improvements and available cost efficiencies.  
+
+- Secure investment funding with sophisticated data visualizations of past and predicted performance.     
+
+- Save time with custom reports and dashboards.   
+
+- Document business practices, goals, strategies, and plans for coherent representation of your organization to investors, bankers, and community partners.    
+
+- Onboard new teammates well with a company handbook including clear procedure notes.    
+
+**A little more about me**  
+
+- 🔭 I’m a big fan of sky events and love to look up every chance I get.  
+
+- 🌱 I’m currently learning the ins and outs of GitHub Pro advanced options and how to care for a range of houseplants that have no business surviving in the PNW.  
+
+- 👯 I’m collaborating with [Samuel Sinyangwe](https://twitter.com/samswey) tracking and analyzing data on police shootings and other activity in the U.S.A. Find the Police Scorecard project [here](https://policescorecard.org).  
+
+- 🤔 I’m looking for help finding my next position, one that provides significant intellectual stimulation and includes predictive modeling and causal inference.    
+
+- 💬 Talk nerdy to me about Star Trek canon, R and RStudio, crime economics, and process improvement.     
+
+- 📫 Learn about supporting survivors of domestic abuse with letter-writing campaigns from [Survived and Punished](https://survivedandpunished.org/letter-writing-action/).  
+
+- 😄 I always smile when I buy or use Post-It flags, when I listen to *Hit or Miss* by Odetta (YouTube vid [here](https://www.youtube.com/watch?v=ENzLb85b1Do)), and when I randomly remember that time 5-year-old me mistook a mincemeat pie for blueberry.   
+
+- ⚡ Fun fact: Many with impostor syndrome are *correct*. -- we are breaking down barriers in spaces made to exclude us. Moral of the story? Embrace the impostor syndrome and be proud you're unseating the status quo!   
+
+![<linkedin>](https://img.shields.io/badge/LInkedIn-000000?style=for-the-badge&logo=LinkedIn&logoColor=blue)  
+
+![GitHub followers](https://img.shields.io/github/followers/AmodeoAdvising?style=social)  
+
+![Twitter Follow](https://img.shields.io/twitter/follow/BeccaAmodeo?style=social)  
+
+![GitHub language count](https://img.shields.io/github/languages/count/AmodeoAdvising/AmodeoAdvising?style=social)  
+
+```{r, eval=FALSE, echo=FALSE, message=FALSE, warning=TRUE}
+statement <- paste0("last updated ", Sys.Date())
+```
+

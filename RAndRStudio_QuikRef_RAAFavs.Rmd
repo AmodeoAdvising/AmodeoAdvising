@@ -1,0 +1,137 @@
+---
+title: "training_R_packages"
+author: "Rebecca Amodeo"
+date: "`r format(Sys.time(), '%X, %d %B, %Y')`"
+output:
+  html_document:
+    theme: journal
+    toc: true
+    toc_float:
+      collapsed: false 
+    number_sections: true 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+library(pacman) 
+```
+# base::  base R  
+These are not exhaustive lists, just my most-used.   
+
+## base operands  
+
+ `==` means is equal to / is exactly in R;  
+ 
+ `!=` means not equal to in R;  
+ 
+ `>=` means greater than or equal to in R;  
+
+## base functions  
+
+
+
+# here::
+
+the here package saves time and code-line-space and allows both importing from and writing to folders in the open project's working directory.  
+
+## here()
+use the here() function from here::.  
+You can see in the examples below the time, accuracy, and hand-cramp saving benefits of `here::here()` and imagine how much more is saved with this function when Working Directory file paths are long.  
+
+**Example:**  
+
+Working Directory (WD) == "C:/MyDocs/SampleProj"   
+
+Folders in WD == c("data", "scripts", "output")   
+
+**Import csv easily by nesting here() in read_csv():**  
+`mydf <- read_csv(here("data", "fileanmemustincludethedotcsv.csv"))` This will create an R object in the global environment out of  "filenamemustincludethedotcsv.csv" from the folder "data" in the assigned/open working directory.  
+
+
+Without `here::here()`, it looks like this: `mydf <- read_csv("C:/MyDocs/SampleProj/data/filenamemustincludethedotcsv.csv")`
+
+```{r herehere1, eval = FALSE, echo = TRUE}
+mydf <- read_csv(here("data", 
+                      "fileanmemustincludethedotcsv.csv")) 
+
+ # with both here::here() and magrittr's pipe operand 
+ # to go right into data processing 
+ ## note only one (1) occurrence of "mydf" needed for all this work! 
+ ### insert googly-eyed emoji here 
+mydf <- read_csv(here("data", 
+                      "fileanmemustincludethedotcsv.csv")) %>%
+  clean_names() %>%
+  select(1:12)
+
+ # without here::here() and magrittr's pipe.  
+ ## note five (5) occurrences of "mydf" in the long-form. 
+mydf <- read_csv("C:/MyDocs/SampleProj/data/filenamemustincludethedotcsv.csv")  
+mydf <- clean_names(mydf)  
+mydf <- select(mydf, 1:12)
+```
+
+**Write csv easily by nesting here() in write_csv():** 
+`write_csv(RObjectIMade, here("output", "fileanmemustincludethedotcsv.csv"))` This writes my named R object from the global environment as "filenamemustincludethedotcsv.csv" to the folder "output" in the assigned/open working directory.   
+
+Without here::here(), it looks like this: `write_csv(RObjectIMade, "C:/MyDocs/SampleProj/data/filenamemustincludethedotcsv.csv")`  
+
+```{r herehere2, eval = FALSE, echo = TRUE}
+write_csv(RObjectIMade, here("output",
+                             "fileanmemustincludethedotcsv.csv"))  
+
+ # with both here::here() and magrittr's pipe operand 
+RObjectIMade %>% 
+  write_csv(here("output",
+                 "fileanmemustincludethedotcsv.csv"))
+
+ # without here::here()  
+write_csv(RObjectIMade,
+          "C:/MyDocs/SampleProj/data/filenamemustincludethedotcsv.csv") 
+```
+
+# magrittr::  
+I use this primarily for the pipe operand, `%>%`, which is now technically avaialble in `base` R. I prefer the magrittr version and always load `magrittr` for the pipe.  
+
+## %>% -- the pipe 
+R package developers are so adorably nerdy. I love it. This package name is inspired by French painter Rene' Magritte. The flagship operand of this package is `%>%` named `the pipe` as an homage to Magritte's famous piece commenting on the nature of art and related abstractions, *The Treachery of Images*.  
+
+# readr::  
+I use this for many read and write functions that are more sophisticated than those available in `base` R.  
+
+## read_csv()  
+
+This function  
+
+## read_xlsx()  
+
+This function  
+
+# RODBC::  
+A life-saver for ODE analysts! 
+## odbcCloseAll()  
+This closes the connection opened to run the query. closing after each query run is best practice for this system.  
+```{r RODBC1, eval = FALSE, echo = TRUE}
+p_load(RODBC)
+
+odbcCloseAll() # just add this after your sqlQuery() code. 
+```
+
+## sqlQuery()  
+```{r RODBC2, eval = FALSE, echo = TRUE}
+p_load(RODBC)
+
+ # Sample SQL database query via RODBC.
+EL <- sqlQuery(odbcConnect("StudentODS_in_Prod"),
+               "SELECT * 
+               FROM dbo.LEP 
+               WHERE Collection_ID = 2498")
+odbcCloseAll()
+```
+
+# skmir::  
+
+my fav function(s) in this package 
+
+## skim()  
+
+

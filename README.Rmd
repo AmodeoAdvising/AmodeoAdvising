@@ -12,9 +12,7 @@ pacman::p_load(dplyr, magrittr, readr)
 
 **AmodeoAdvising/AmodeoAdvising** is a ✨ _very special_ ✨ repository because it's where we e-meet!  
 
-I'm R A Amodeo (they/she), born scientist and trained econometrician.  
-
-Welcome to my GitHub profile.  
+I'm R A Amodeo (they/she), born scientist and trained econometrician. Welcome to my GitHub profile.  
 
 **Let's work together.**  
 Browse my public repos and reach out via [email](mailto:rebeccaaamodeo@gmail.com) to learn what being on my client list can do for you.   

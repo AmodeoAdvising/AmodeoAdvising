@@ -1,5 +1,6 @@
 ---
-title: "training_R_packages"
+title: "My Favorite / Most Used R and RStudio Stuff" 
+subtitle: "I'd love to learn about yours!" 
 author: "Rebecca Amodeo"
 date: "`r format(Sys.time(), '%X, %d %B, %Y')`"
 output:
@@ -28,7 +29,30 @@ These are not exhaustive lists, just my most-used.
 
 ## base functions  
 
+## RStudio Shortcuts  
+To comment out or in any line or set of lines.  
 
+Step 1: highlight text / rows.  
+
+Step 2: hold down `ctrl` + `shift` + hit `C`.  
+
+Step 3: be so happy at all the time you saved :)  
+```{r sample01} 
+# sqlQuery(odbcConnect("StudentODS_in_Prod"),
+  #              "SELECT A.RptChkDigitStdntID,
+  #                     A.EthnicCd,
+  #                     A.EconDsvntgFg,
+  #                     A.LEPFg,
+  #                     A.SpEdFg,
+  #                     B.ChkDigitStdntID,
+  #                     B.FinalChkDigitStdntID
+  #                   FROM PIE.dbo.V_RO_SpringMbrshp A
+  #                   LEFT JOIN [StudentODS].[dbo].[SSIDResolutionList] B
+  #                     ON A.RptChkDigitStdntID = B.FinalChkDigitStdntID
+  #                   WHERE Collection_ID = 2501 --3rd Period ADM in report year
+  #                     AND A.EndDt IS NULL
+  #                     AND B.EndDt IS NOT NULL") 
+```
 
 # here::
 
@@ -90,7 +114,7 @@ write_csv(RObjectIMade,
 ```
 
 # magrittr::  
-I use this primarily for the pipe operand, `%>%`, which is now technically avaialble in `base` R. I prefer the magrittr version and always load `magrittr` for the pipe.  
+I use this primarily for the pipe operand, `%>%`, which is now technically available in `base` R. I prefer the magrittr version and always load `magrittr` for the pipe.  
 
 ## %>% -- the pipe 
 R package developers are so adorably nerdy. I love it. This package name is inspired by French painter Rene' Magritte. The flagship operand of this package is `%>%` named `the pipe` as an homage to Magritte's famous piece commenting on the nature of art and related abstractions, *The Treachery of Images*.  
@@ -121,7 +145,7 @@ odbcCloseAll() # just add this after your sqlQuery() code.
 p_load(RODBC)
 
  # Sample SQL database query via RODBC.
-EL <- sqlQuery(odbcConnect("StudentODS_in_Prod"),
+EL <- sqlQuery(odbcConnect("ODBCConnectionName"),
                "SELECT * 
                FROM dbo.LEP 
                WHERE Collection_ID = 2498")
@@ -135,3 +159,23 @@ my fav function(s) in this package
 ## skim()  
 
 
+# Other Quick Reference Guides  
+I love the pretty "cheat sheets" for packages or thematically grouped operators and functions like these below.   
+
+*You can get them all and more on the [RStudio cheatsheets page](https://www.rstudio.com/resources/cheatsheets/)*  
+
+The `dplyr` [data transformation](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf) cheat sheet.    
+
+The `ggplot2` [data viz](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) cheat sheet.   
+
+The `lubridate` [dates and times](https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf) cheat sheet.    
+
+The `plumber` [Web API](https://raw.githubusercontent.com/rstudio/cheatsheets/main/plumber.pdf) cheat sheet.    
+
+The `purr` [apply functions](https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf) cheat sheet.  
+
+The [R Markdown](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown.pdf) cheat sheet.  
+
+The [RStudio IDE](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf) cheat sheet.  
+
+The `stringr` [string manipulation](https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf) cheat sheet.  

@@ -17,17 +17,20 @@ knitr::opts_chunk$set(echo = TRUE)
 library(pacman) 
 ```
 # base::  base R  
-These are not exhaustive lists, just my most-used.   
+This is not an exhaustive list, just a small, curated presentation of my most-beloved `R` and `RStudio` operands, shortcuts, functions, and more.   
 
 ## base operands  
 
- `==` means is equal to / is exactly in R;  
+ `==` means is equal to / is exactly in `R`;  
  
- `!=` means not equal to in R;  
+ `!=` means not equal to in `R`;  
  
- `>=` means greater than or equal to in R;  
+ `>=` means greater than or equal to in `R`;  
 
 ## base functions  
+
+### duplicated()   
+mutate(hasrepeat = duplicated((forever_prog_id)))  
 
 ## RStudio Shortcuts  
 To comment out or in any line or set of lines.  
@@ -37,8 +40,11 @@ Step 1: highlight text / rows.
 Step 2: hold down `ctrl` + `shift` + hit `C`.  
 
 Step 3: be so happy at all the time you saved :)  
+
 ```{r sample01} 
-# sqlQuery(odbcConnect("StudentODS_in_Prod"),
+# p_load(RODBC) 
+# 
+# sqlQuery(odbcConnect("SQLConnection"),
   #              "SELECT A.RptChkDigitStdntID,
   #                     A.EthnicCd,
   #                     A.EconDsvntgFg,
@@ -52,6 +58,8 @@ Step 3: be so happy at all the time you saved :)
   #                   WHERE Collection_ID = 2501 --3rd Period ADM in report year
   #                     AND A.EndDt IS NULL
   #                     AND B.EndDt IS NOT NULL") 
+# 
+# odbcCloseAll()
 ```
 
 # here::
@@ -74,21 +82,27 @@ Folders in WD == c("data", "scripts", "output")
 
 Without `here::here()`, it looks like this: `mydf <- read_csv("C:/MyDocs/SampleProj/data/filenamemustincludethedotcsv.csv")`
 
-```{r herehere1, eval = FALSE, echo = TRUE}
+```{r herehere1, eval = FALSE, echo = TRUE} 
+p_load(here, janitor, readr, magrittr) 
+
 mydf <- read_csv(here("data", 
                       "fileanmemustincludethedotcsv.csv")) 
+```
 
- # with both here::here() and magrittr's pipe operand 
- # to go right into data processing 
- ## note only one (1) occurrence of "mydf" needed for all this work! 
- ### insert googly-eyed emoji here 
+With both `here::here()` and magrittr's `pipe operand`, we can  go right into data processing.  
+Sweet, right?  
+
+**note** only one (1) occurrence of `mydf` needed for all this work! Insert googly-eyed emoji here.  
+
+```{r herehere2, eval = FALSE, echo = TRUE}
 mydf <- read_csv(here("data", 
                       "fileanmemustincludethedotcsv.csv")) %>%
   clean_names() %>%
   select(1:12)
+```
 
- # without here::here() and magrittr's pipe.  
- ## note five (5) occurrences of "mydf" in the long-form. 
+Without `here::here()` and magrittr's `pipe`. **note** five (5) occurrences of `mydf` in the long-form.  
+```{r herehere3, eval = FALSE, echo = TRUE}
 mydf <- read_csv("C:/MyDocs/SampleProj/data/filenamemustincludethedotcsv.csv")  
 mydf <- clean_names(mydf)  
 mydf <- select(mydf, 1:12)
@@ -99,7 +113,7 @@ mydf <- select(mydf, 1:12)
 
 Without here::here(), it looks like this: `write_csv(RObjectIMade, "C:/MyDocs/SampleProj/data/filenamemustincludethedotcsv.csv")`  
 
-```{r herehere2, eval = FALSE, echo = TRUE}
+```{r herehere4, eval = FALSE, echo = TRUE}
 write_csv(RObjectIMade, here("output",
                              "fileanmemustincludethedotcsv.csv"))  
 
@@ -119,6 +133,19 @@ I use this primarily for the pipe operand, `%>%`, which is now technically avail
 ## %>% -- the pipe 
 R package developers are so adorably nerdy. I love it. This package name is inspired by French painter Rene' Magritte. The flagship operand of this package is `%>%` named `the pipe` as an homage to Magritte's famous piece commenting on the nature of art and related abstractions, *The Treachery of Images*.  
 
+# pacman::  
+An early and enduring fav! This package applies function generally limited to one (1) `x` argument to multiple specified objects.  
+
+## p_load()  
+
+My number one in this package is `p_load`. I use it in virtually all my scripts.  
+
+This performs **both** `base::install.package()` **and** `base::library()` **as-freakin-needed**. Massive time and sanity saver for me.  
+```{r pacmanpload}
+
+```
+
+
 # readr::  
 I use this for many read and write functions that are more sophisticated than those available in `base` R.  
 
@@ -137,7 +164,7 @@ This closes the connection opened to run the query. closing after each query run
 ```{r RODBC1, eval = FALSE, echo = TRUE}
 p_load(RODBC)
 
-odbcCloseAll() # just add this after your sqlQuery() code. 
+odbcCloseAll() # add this after your sqlQuery() code. 
 ```
 
 ## sqlQuery()  
@@ -158,6 +185,8 @@ my fav function(s) in this package
 
 ## skim()  
 
+# YAML stuff for .Rmd  
+I have some go-to YAML formatting of my .Rmd output.  
 
 # Other Quick Reference Guides  
 I love the pretty "cheat sheets" for packages or thematically grouped operators and functions like these below.   

@@ -227,7 +227,22 @@ I often theme by project to help myself and teammates keep track of which we are
   - Secondary Career Pathways uses `lumen`   
   - ADI_90pct_Validation uses `darkly`  
   - Civil Rights Report uses `sandstone`  
-  
+
+
+# zoomGroupStats()   
+I haven't gotten this yet. Documentation at http://zoomgroupstats.org/  
+
+```{r} 
+p_load(zoomGroupStats)
+
+zchat <- processZoomChat(
+  fname = system.file(here("data", "meeting_saved_chat.txt"),
+                      package = "zoomGroupStats"),
+  sessionStartDateTime = "2022-10-14 11:55:17",
+  languageCode = "en") 
+
+```
+
 
 # Other Quick Reference Guides  
 I love the pretty "cheat sheets" for packages or thematically grouped operators and functions like these below.   
